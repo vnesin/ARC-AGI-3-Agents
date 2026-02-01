@@ -7,9 +7,9 @@ from typing import Any, Optional
 from arcengine import FrameData, GameAction, GameState
 from claude_agent_sdk import query, ClaudeAgentOptions, AssistantMessage, ToolUseBlock, ResultMessage, SystemMessage
 
-from ..agent import Agent
-from ..claude_tools import create_arc_tools_server
-from ..claude_recorder import ClaudeCodeRecorder
+from ...agent import Agent
+from .claude_tools import create_arc_tools_server
+from .claude_recorder import ClaudeCodeRecorder
 
 logger = logging.getLogger()
 
@@ -245,21 +245,11 @@ class ClaudeCodeAgent(Agent):
                 }
                 
                 cost_usd = 0.0
-                if self.result_message:
-                    if hasattr(self.result_message, 'total_cost_usd') and self.result_message.total_cost_usd is not None:
-                        cost_usd = self.result_message.total_cost_usd
-                        logger.debug(f"Using result_message.total_cost_usd: {cost_usd}")
-                    elif hasattr(self.result_message, 'usage') and self.result_message.usage:
-                        logger.debug(f"Calculating from result_message.usage: {self.result_message.usage}")
-                        try:
-                            cost_usd = self.claude_recorder.calculate_cost_from_usage(self.result_message.usage)
-                            logger.debug(f"Calculated cost: {cost_usd}")
-                        except Exception as e:
-                            logger.error(f"Failed to calculate cost: {e}")
-                    else:
-                        logger.warning("ResultMessage has no cost or usage data")
+                if self.result_message and hasattr(self.result_message, 'total_cost_usd'):
+                    cost_usd = self.result_message.total_cost_usd or 0.0
+                    logger.debug(f"Cost from API: ${cost_usd:.6f}")
                 else:
-                    logger.warning("No ResultMessage captured")
+                    logger.warning("No total_cost_usd in ResultMessage")
                 
                 self.cumulative_cost_usd += cost_usd
                 

@@ -12,11 +12,6 @@ logger = logging.getLogger()
 
 class ClaudeCodeRecorder:
     
-    ANTHROPIC_PRICING = {
-        "input_tokens": 0.003 / 1000,
-        "output_tokens": 0.015 / 1000,
-    }
-    
     def __init__(self, game_id: str, agent_name: str):
         self.game_id = game_id
         self.agent_name = agent_name
@@ -142,23 +137,3 @@ class ClaudeCodeRecorder:
                 text_parts.append(msg.get("content", ""))
         
         return "".join(text_parts)
-    
-    def calculate_cost_from_usage(self, usage: dict[str, Any]) -> float:
-        try:
-            input_tokens = usage.get("input_tokens", 0)
-            output_tokens = usage.get("output_tokens", 0)
-            
-            if not isinstance(input_tokens, (int, float)) or not isinstance(output_tokens, (int, float)):
-                logger.warning(f"Invalid token counts: input={input_tokens}, output={output_tokens}")
-                return 0.0
-            
-            cost_usd = (
-                input_tokens * self.ANTHROPIC_PRICING["input_tokens"] +
-                output_tokens * self.ANTHROPIC_PRICING["output_tokens"]
-            )
-            
-            logger.debug(f"Calculated cost from usage: {input_tokens} in, {output_tokens} out = ${cost_usd}")
-            return cost_usd
-        except Exception as e:
-            logger.error(f"Error calculating cost: {e}")
-            return 0.0

@@ -6,7 +6,7 @@ from arcengine import FrameData
 from claude_agent_sdk import tool, create_sdk_mcp_server
 
 if TYPE_CHECKING:
-    from .templates.claude_agents import ClaudeCodeAgent
+    from .claude_agents import ClaudeCodeAgent
 
 logger = logging.getLogger()
 
