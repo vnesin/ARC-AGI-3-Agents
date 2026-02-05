@@ -184,6 +184,8 @@ class ClaudeCodeAgent(Agent):
                         if not self.session_id:
                             self.session_id = message.data.get('session_id')
                             logger.info(f"Session started: {self.session_id}")
+                            if self.claude_recorder:
+                                self.claude_recorder.update_session_id(self.session_id)
                         else:
                             resumed_session = message.data.get('session_id')
                             if resumed_session != self.session_id:
