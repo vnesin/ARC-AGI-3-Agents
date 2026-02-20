@@ -89,6 +89,7 @@ class ClaudeCodeAgent(Agent):
         self.session_id = None
         self.consecutive_errors = 0
         self.previous_action_info: Optional[dict[str, str]] = None
+        self.action_history: list[str] = []
         self.mcp_server = create_arc_tools_server(self)
         self.notes_session_id = str(uuid.uuid4())
         self.notes_dir = os.path.abspath(
@@ -369,6 +370,32 @@ class ClaudeCodeAgent(Agent):
                 pass
         return {"name": name, "details": details}
 
+    def _detect_action_loop(self, window: int = 15) -> Optional[str]:
+        """Check if recent actions form a repeating loop.
+
+        Looks at the last `window` actions and checks if they consist entirely
+        of a short repeating pattern (1-3 unique actions cycling). Returns a
+        warning string if a loop is detected, None otherwise.
+        """
+        history = self.action_history
+        if len(history) < window:
+            return None
+        recent = history[-window:]
+        # Check repeating patterns of length 1, 2, and 3
+        for pattern_len in range(1, 4):
+            pattern = recent[:pattern_len]
+            is_loop = all(
+                recent[i] == pattern[i % pattern_len] for i in range(window)
+            )
+            if is_loop:
+                cycle_str = " -> ".join(pattern)
+                return (
+                    f"WARNING: You are stuck in a loop — you have repeated "
+                    f"[{cycle_str}] for the last {window} actions. This is not "
+                    f"making progress. Try a completely different action or strategy."
+                )
+        return None
+
     def build_game_prompt(
         self, frames: list[FrameData], latest_frame: FrameData
     ) -> str:
@@ -435,6 +462,7 @@ class ClaudeCodeAgent(Agent):
                 )
 
         previous_action_section = self._build_previous_action_section(frames)
+        loop_warning = self._detect_action_loop() or ""
 
         prompt = textwrap.dedent(f"""
             You are playing an ARC-AGI-3 game. Your goal is to solve the puzzle.
@@ -443,6 +471,7 @@ class ClaudeCodeAgent(Agent):
             Current State: {latest_frame.state.value}
             Levels Completed: {latest_frame.levels_completed}
             {previous_action_section}
+            {loop_warning}
             {animation_section}
 
             Current Grid (64x64, values 0-15):
@@ -453,6 +482,9 @@ class ClaudeCodeAgent(Agent):
             is the Current Grid). If there are more frames than can be shown, up to
             {MAX_ANIMATION_FRAMES} evenly-spaced frames are displayed. The Current Grid
             always reflects the final state.
+
+            Note: Games may contain progress bars or energy bars visible in the grid. The
+            goal of the game is never to simply waste actions to fill or drain these bars.
 
             Available game action tools (only these are valid this turn):
             {available_tools_str}
@@ -568,6 +600,10 @@ class ClaudeCodeAgent(Agent):
             action = GameAction.RESET
             action.reasoning = "Auto-reset: game over state detected"
             self.previous_action_info = self._build_action_info(action)
+            self.action_history.append(
+                self.previous_action_info["name"]
+                + self.previous_action_info.get("details", "")
+            )
             self._auto_reset_from_game_over = True
             return action
 
@@ -802,6 +838,10 @@ class ClaudeCodeAgent(Agent):
                     logger.debug(traceback.format_exc())
 
             self.previous_action_info = self._build_action_info(action_taken)
+            self.action_history.append(
+                self.previous_action_info["name"]
+                + self.previous_action_info.get("details", "")
+            )
             return action_taken
 
         self.consecutive_errors += 1
@@ -825,6 +865,10 @@ class ClaudeCodeAgent(Agent):
             )
         fallback = self._build_fallback_action(latest_frame)
         self.previous_action_info = self._build_action_info(fallback)
+        self.action_history.append(
+            self.previous_action_info["name"]
+            + self.previous_action_info.get("details", "")
+        )
         return fallback
 
     def cleanup(self, scorecard=None):
