@@ -285,14 +285,22 @@ class ConversationRollingWindow(Agent):
         self, frames: list[FrameData], latest_frame: FrameData
     ) -> GameAction:
         # Reset whenever the environment indicates the game is not currently playable.
+        # Show the game-over frame to the model so it sees why it died.
         if latest_frame.state in (GameState.NOT_PLAYED, GameState.GAME_OVER):
+            if latest_frame.state == GameState.GAME_OVER:
+                self.conversation.append(
+                    {
+                        "role": "user",
+                        "content": self.build_frame_content(latest_frame),
+                    }
+                )
             self._save_step(
                 StepRecord(
                     step=self.step_counter + 1,
                     timestamp=datetime.now(timezone.utc),
                     duration_seconds=0.0,
                     model=self.MODEL,
-                    messages_sent=[],
+                    messages_sent=list(self.conversation),
                     parsed_action="RESET",
                 )
             )
