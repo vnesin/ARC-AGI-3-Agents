@@ -1,9 +1,10 @@
 - name: "gpt-5.4-openrouter"
   agent:
-    max_context_length: 175000
-    max_actions: 15
-  api:
-    model: "openai/gpt-5.4"
+    MAX_ACTIONS: 2
+    MAX_CONTEXT_LENGTH: 175000
+  client:
     base_url: "https://openrouter.ai/api/v1"
     api_key_env: "OPENROUTER_API_KEY"
+  call:
+    model: "openai/gpt-5.4"
     max_completion_tokens: 1000000

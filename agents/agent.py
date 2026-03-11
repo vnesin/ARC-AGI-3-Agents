@@ -48,6 +48,7 @@ class Agent(ABC):
         record: bool,
         arc_env: EnvironmentWrapper,
         tags: Optional[list[str]] = None,
+        config: Optional[str] = None,
     ) -> None:
         self.ROOT_URL = ROOT_URL
         self.card_id = card_id
@@ -55,6 +56,7 @@ class Agent(ABC):
         self.guid = ""
         self.agent_name = agent_name
         self.tags = tags or []
+        self.config = config
         self.frames = [FrameData(levels_completed=0)]
         self._cleanup = True
         if record:

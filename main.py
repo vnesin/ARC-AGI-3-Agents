@@ -107,6 +107,13 @@ def main() -> None:
         help="Comma-separated list of tags for the scorecard (e.g., 'experiment,v1.0')",
         default=None,
     )
+    parser.add_argument(
+        "-c",
+        "--config",
+        type=str,
+        help="Model config ID to use (from model_configs.yaml)",
+        default=None,
+    )
 
     args = parser.parse_args()
 
@@ -183,7 +190,8 @@ def main() -> None:
         args.agent,
         ROOT_URL,
         games,
-        tags=tags,  # Pass tags as keyword argument
+        tags=tags,
+        config=args.config,
     )
     agent_thread = threading.Thread(target=partial(run_agent, swarm))
     agent_thread.daemon = True  # die when the main thread dies

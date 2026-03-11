@@ -30,30 +30,45 @@ class ConversationRollingWindow(Agent):
     """
 
     MODEL_CONFIG_ID: str = "gpt-5.4-openrouter"
-    MAX_ACTIONS: int = 60
+    MAX_ACTIONS: int = 10
     MAX_RETRIES: int = 3
-    MAX_CONTEXT_LENGTH: int = 180000
+    MAX_CONTEXT_LENGTH: int = 100000
     MAX_ANIMATION_FRAMES: int = 7
-    REASONING_EFFORT: Optional[str] = None
     # Empirically, rendered ARC grid payloads are close to 1 char per token.
     # Using 1.0 is intentionally conservative relative to observed runs.
     ESTIMATED_CHARS_PER_TOKEN: float = 1.0
 
-    # Defaults used when the YAML entry is missing base_url / api_key_env
+    # Defaults used when the YAML entry is missing client fields
     _DEFAULT_BASE_URL: str = "https://openrouter.ai/api/v1"
     _DEFAULT_API_KEY_ENV: str = "OPENROUTER_API_KEY"
 
     def __init__(self, *args: Any, **kwargs: Any) -> None:
         super().__init__(*args, **kwargs)
+        if self.config:
+            self.MODEL_CONFIG_ID = self.config
         self.conversation: list[dict[str, Any]] = []
         self.token_counter: int = 0
-        model_cfg = self._load_model_config()
-        self.MODEL: str = model_cfg["model"]
-        base_url = model_cfg.get("base_url", self._DEFAULT_BASE_URL)
-        api_key_env = model_cfg.get("api_key_env", self._DEFAULT_API_KEY_ENV)
+
+        agent_cfg, client_cfg, call_cfg = self._load_model_config()
+
+        # Agent-level overrides
+        self.MAX_ACTIONS = agent_cfg.get("MAX_ACTIONS", self.MAX_ACTIONS)
+        self.MAX_CONTEXT_LENGTH = agent_cfg.get(
+            "MAX_CONTEXT_LENGTH", self.MAX_CONTEXT_LENGTH
+        )
+        self.MAX_ANIMATION_FRAMES = agent_cfg.get(
+            "MAX_ANIMATION_FRAMES", self.MAX_ANIMATION_FRAMES
+        )
+        self.MAX_RETRIES = agent_cfg.get("MAX_RETRIES", self.MAX_RETRIES)
+
+        # Call kwargs passed directly to chat.completions.create()
+        self.MODEL: str = call_cfg["model"]
+        self._call_kwargs: dict[str, Any] = call_cfg
+
+        # Client
         self._client = OpenAIClient(
-            base_url=base_url,
-            api_key=os.environ.get(api_key_env, ""),
+            base_url=client_cfg["base_url"],
+            api_key=os.environ.get(client_cfg["api_key_env"], ""),
         )
         # Per-step recording
         self.step_counter: int = 0
@@ -70,11 +85,18 @@ class ConversationRollingWindow(Agent):
         )
         self._write_run_meta()
 
-    def _load_model_config(self) -> dict[str, Any]:
-        """Load the ``api`` section from model_configs.yaml matching MODEL_CONFIG_ID.
+    def _load_model_config(
+        self,
+    ) -> tuple[dict[str, Any], dict[str, Any], dict[str, Any]]:
+        """Load config from model_configs.yaml matching MODEL_CONFIG_ID.
 
-        Raises ``ValueError`` if the YAML file is missing or no entry with a
-        matching ``name`` is found.
+        Returns three dicts: (agent_cfg, client_cfg, call_cfg).
+        - agent_cfg:  agent-level settings (MAX_ACTIONS, MAX_CONTEXT_LENGTH, …)
+        - client_cfg: OpenAI client constructor args (base_url, api_key_env)
+        - call_cfg:   kwargs passed directly to chat.completions.create()
+                      (model, max_completion_tokens, reasoning_effort, …)
+
+        Raises ``ValueError`` if the YAML file is missing or no matching entry.
         """
         cfg_path = Path(__file__).parent / "model_configs.yaml"
         if not cfg_path.exists():
@@ -83,14 +105,26 @@ class ConversationRollingWindow(Agent):
                 f"Cannot resolve MODEL_CONFIG_ID={self.MODEL_CONFIG_ID!r}."
             )
         configs = yaml.safe_load(cfg_path.read_text()) or []
+        raw: dict[str, Any] | None = None
         for entry in configs:
             if entry.get("name") == self.MODEL_CONFIG_ID:
-                return dict(entry.get("api", {}))
-        available = [e.get("name") for e in configs]
-        raise ValueError(
-            f"Model config {self.MODEL_CONFIG_ID!r} not found in {cfg_path}. "
-            f"Available configs: {available}"
-        )
+                raw = entry
+                break
+        if raw is None:
+            available = [e.get("name") for e in configs]
+            raise ValueError(
+                f"Model config {self.MODEL_CONFIG_ID!r} not found in {cfg_path}. "
+                f"Available configs: {available}"
+            )
+
+        agent_cfg: dict[str, Any] = dict(raw.get("agent", {}))
+        client_cfg: dict[str, Any] = dict(raw.get("client", {}))
+        call_cfg: dict[str, Any] = dict(raw.get("call", {}))
+
+        client_cfg.setdefault("base_url", self._DEFAULT_BASE_URL)
+        client_cfg.setdefault("api_key_env", self._DEFAULT_API_KEY_ENV)
+
+        return agent_cfg, client_cfg, call_cfg
 
     @property
     def name(self) -> str:
@@ -386,14 +420,10 @@ class ConversationRollingWindow(Agent):
     def _call_api(self) -> Any:
         self._trim_to_fit_context()
 
-        create_kwargs: dict[str, Any] = {
-            "model": self.MODEL,
-            "messages": self.conversation,
-        }
-        if self.REASONING_EFFORT is not None:
-            create_kwargs["reasoning_effort"] = self.REASONING_EFFORT
-
-        response = self._client.chat.completions.create(**create_kwargs)
+        response = self._client.chat.completions.create(
+            messages=self.conversation,
+            **self._call_kwargs,
+        )
 
         if not response.choices:
             self._save_diagnostic(response)
