@@ -164,7 +164,7 @@ class ConversationRollingWindow(Agent):
 
     def _build_system_prompt(self) -> str:
         return textwrap.dedent("""\
-            You are playing a game. Your goal is to win in as few actions as possible. Reply with the exact action you choose. Any notes you make will be carried over to the next turn.
+            You are playing a game. Your goal is to win. Reply with the exact action. The final action in your reply will be executed next turn. Your reply will be carried to the next turn.
         """)
 
     def _get_actions(self, latest_frame: FrameData) -> list[GameAction]:
@@ -380,14 +380,7 @@ class ConversationRollingWindow(Agent):
         )
         duration = round(time.monotonic() - start, 3)
 
-        # Build conversation message: include reasoning if present
-        if reasoning:
-            conversation_text = (
-                f"<reasoning>\n{reasoning}\n</reasoning>\n\n{assistant_text}"
-            )
-        else:
-            conversation_text = assistant_text
-        self.conversation.append({"role": "assistant", "content": conversation_text})
+        self.conversation.append({"role": "assistant", "content": assistant_text})
 
         logger.info(f"Parsed action: {self._format_parsed_action(action)}")
         self._save_step(
