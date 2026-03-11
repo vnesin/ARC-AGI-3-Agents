@@ -8,3 +8,14 @@
   call:
     model: "openai/gpt-5.4"
     max_completion_tokens: 1000000
+
+- name: "opus-4.6-anthropic"
+  agent:
+    MAX_ACTIONS: 2
+    MAX_CONTEXT_LENGTH: 100000
+  client:
+    base_url: "https://api.anthropic.com/v1/"
+    api_key_env: "ANTHROPIC_API_KEY"
+  call:
+    model: "claude-opus-4-6"
+    max_tokens: 100000
