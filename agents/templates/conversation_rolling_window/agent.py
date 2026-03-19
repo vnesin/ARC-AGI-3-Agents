@@ -446,6 +446,7 @@ class ConversationRollingWindow(Agent):
         output_cost = calculate_cost(
             step_usage.completion_tokens, self._pricing.get("output", 0.0)
         )
+        total_cost = input_cost + output_cost
         metadata = ActionMetadata(
             output=assistant_text,
             reasoning=reasoning,
@@ -453,10 +454,14 @@ class ConversationRollingWindow(Agent):
             cost=CostDetails(
                 input_cost=input_cost,
                 output_cost=output_cost,
-                total_cost=input_cost + output_cost,
+                total_cost=total_cost,
             ),
         )
         action.reasoning = metadata.model_dump()
+        logger.info(
+            f"Step cost: ${total_cost:.6f} "
+            f"(input: ${input_cost:.6f}, output: ${output_cost:.6f})"
+        )
 
         return action
 
