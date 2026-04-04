@@ -11,6 +11,8 @@ from .templates.langgraph_thinking import LangGraphThinking
 from .templates.llm_agents import LLM, FastLLM, GuidedLLM, ReasoningLLM
 from .templates.multimodal import MultiModalLLM
 from .templates.random_agent import Random
+from .templates.rewind_agent import RewindAgent
+from .templates.rewind_v17 import RewindAgentV17
 from .templates.reasoning_agent import ReasoningAgent
 from .templates.smolagents import SmolCodingAgent, SmolVisionAgent
 
@@ -28,6 +30,8 @@ for rec in Recorder.list():
 
 # update the agent dictionary to include subclasses of LLM class
 AVAILABLE_AGENTS["reasoningagent"] = ReasoningAgent
+AVAILABLE_AGENTS["rewindagent"] = RewindAgent
+AVAILABLE_AGENTS["rewindagentv17"] = RewindAgentV17
 
 __all__ = [
     "Swarm",
@@ -44,6 +48,8 @@ __all__ = [
     "SmolCodingAgent",
     "SmolVisionAgent",
     "Agent",
+    "RewindAgent",
+    "RewindAgentV17",
     "Recorder",
     "Playback",
     "AVAILABLE_AGENTS",
