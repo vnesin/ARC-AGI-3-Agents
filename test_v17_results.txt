@@ -1,0 +1,154 @@
+
+=== ar25 ===
+  L0: SOLVED (15 act, 5b)
+  L1: SOLVED (15 act, 5b)
+  L2: SOLVED (15 act, 5b)
+  L3: SOLVED (15 act, 5b)
+  L4: SOLVED (15 act, 5b)
+  L5: SOLVED (15 act, 5b)
+  Timeout L6
+
+=== bp35 ===
+  L0: FAILED (11b)
+
+=== cd82 ===
+  L0: FAILED (6b)
+
+=== cn04 ===
+  L0: FAILED (7b)
+
+=== dc22 ===
+  L0: FAILED (7b)
+
+=== ft09 ===
+  L0: SOLVED (4 act, 8b)
+  L1: SOLVED (4 act, 8b)
+  L2: SOLVED (4 act, 8b)
+  L3: SOLVED (4 act, 8b)
+  L4: SOLVED (4 act, 8b)
+  L5: SOLVED (4 act, 8b)
+  ERROR: Level index 6 out of range [0, 6)
+
+=== g50t ===
+  L0: FAILED (2b)
+
+=== ka59 ===
+  L0: FAILED (6b)
+
+=== lf52 ===
+  L0: FAILED (4b)
+
+=== lp85 ===
+  L0: no actions
+
+=== ls20 ===
+  L0: SOLVED (13 act, 4b)
+  L1: SOLVED (13 act, 4b)
+  L2: SOLVED (13 act, 4b)
+  L3: SOLVED (13 act, 4b)
+  L4: SOLVED (13 act, 4b)
+  L5: SOLVED (13 act, 4b)
+  L6: SOLVED (13 act, 4b)
+  ERROR: Level index 7 out of range [0, 7)
+
+=== m0r0 ===
+  L0: SOLVED (15 act, 4b)
+  L1: SOLVED (15 act, 4b)
+  L2: SOLVED (15 act, 4b)
+  L3: SOLVED (15 act, 4b)
+  L4: SOLVED (15 act, 4b)
+  L5: SOLVED (15 act, 4b)
+  ERROR: Level index 6 out of range [0, 6)
+
+=== r11l ===
+  L0: SOLVED (3 act, 88b)
+  L1: SOLVED (3 act, 88b)
+  Timeout L2
+
+=== re86 ===
+  L0: FAILED (5b)
+
+=== s5i5 ===
+  L0: SOLVED (13 act, 5b)
+  L1: SOLVED (13 act, 5b)
+  L2: SOLVED (13 act, 5b)
+  L3: SOLVED (13 act, 5b)
+  L4: SOLVED (13 act, 5b)
+  L5: SOLVED (13 act, 5b)
+  L6: SOLVED (13 act, 5b)
+  L7: SOLVED (13 act, 5b)
+  ERROR: Level index 8 out of range [0, 8)
+
+=== sb26 ===
+  L0: FAILED (5b)
+
+=== sc25 ===
+  L0: no actions
+
+=== sk48 ===
+  L0: FAILED (3b)
+
+=== sp80 ===
+  L0: SOLVED (4 act, 6b)
+  L1: SOLVED (4 act, 6b)
+  L2: SOLVED (4 act, 6b)
+  L3: SOLVED (4 act, 6b)
+  L4: SOLVED (4 act, 6b)
+  L5: SOLVED (4 act, 6b)
+  ERROR: Level index 6 out of range [0, 6)
+
+=== su15 ===
+  L0: FAILED (16b)
+
+=== tn36 ===
+  L0: FAILED (12b)
+
+=== tr87 ===
+  L0: FAILED (4b)
+
+=== tu93 ===
+  L0: FAILED (2b)
+
+=== vc33 ===
+  L0: SOLVED (3 act, 3b)
+  L1: SOLVED (3 act, 3b)
+  L2: SOLVED (3 act, 3b)
+  L3: SOLVED (3 act, 3b)
+  L4: SOLVED (3 act, 3b)
+  L5: SOLVED (3 act, 3b)
+  L6: SOLVED (3 act, 3b)
+  ERROR: Level index 7 out of range [0, 7)
+
+=== wa30 ===
+  L0: FAILED (4b)
+
+==================================================
+SUMMARY
+==================================================
+  ar25    : L0-L5
+  bp35    : -
+  cd82    : -
+  cn04    : -
+  dc22    : -
+  ft09    : -
+  g50t    : -
+  ka59    : -
+  lf52    : -
+  lp85    : -
+  ls20    : -
+  m0r0    : -
+  r11l    : L0-L1
+  re86    : -
+  s5i5    : -
+  sb26    : -
+  sc25    : -
+  sk48    : -
+  sp80    : -
+  su15    : -
+  tn36    : -
+  tr87    : -
+  tu93    : -
+  vc33    : -
+  wa30    : -
+
+2/25 games, 8 levels

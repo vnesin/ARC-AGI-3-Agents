@@ -1,0 +1,11 @@
+{
+  "id": "volodymyrnesin/rewind-agent-v20-arc-agi-3",
+  "title": "Rewind Agent v20 ARC-AGI-3",
+  "code_file": "kaggle_v20.ipynb",
+  "language": "python",
+  "kernel_type": "notebook",
+  "is_private": true,
+  "enable_gpu": false,
+  "enable_internet": false,
+  "competition_sources": ["arc-prize-2026-arc-agi-3"]
+}

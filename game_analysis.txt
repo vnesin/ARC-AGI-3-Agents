@@ -1,0 +1,466 @@
+
+======================================================================
+Analyzing: AR25
+======================================================================
+Actions: [1, 2, 3, 4, 5, 6, 7] (count: 7)
+Levels: 8
+State variables: 21
+Hidden state: True - {'hidden_state'}
+Grammar rules: False
+Sequence parsing: False
+Rotation index: False
+Complex logic: True (1842 lines)
+
+Branching factor: ~36
+State space (depth 10): ~3.66e+15
+State space (depth 20): ~1.34e+31
+
+======================================================================
+Analyzing: BP35
+======================================================================
+Actions: [3, 4, 6, 7] (count: 4)
+Levels: 9
+State variables: 98
+Hidden state: True - {'hidden_state'}
+Grammar rules: False
+Sequence parsing: False
+Rotation index: False
+Complex logic: True (4566 lines)
+
+Branching factor: ~33
+State space (depth 10): ~1.53e+15
+State space (depth 20): ~2.35e+30
+
+======================================================================
+Analyzing: CD82
+======================================================================
+Actions: [1, 2, 3, 4, 5, 6] (count: 6)
+Levels: 6
+State variables: 26
+Hidden state: True - {'hidden_state'}
+Grammar rules: False
+Sequence parsing: False
+Rotation index: False
+Complex logic: True (778 lines)
+
+Branching factor: ~35
+State space (depth 10): ~2.76e+15
+State space (depth 20): ~7.61e+30
+
+======================================================================
+Analyzing: CN04
+======================================================================
+Actions: [1, 2, 3, 4, 5, 6] (count: 6)
+Levels: 5
+State variables: 9
+Hidden state: True - {'hidden_state'}
+Grammar rules: False
+Sequence parsing: False
+Rotation index: False
+Complex logic: True (691 lines)
+
+Branching factor: ~35
+State space (depth 10): ~2.76e+15
+State space (depth 20): ~7.61e+30
+
+======================================================================
+Analyzing: DC22
+======================================================================
+Actions: [1, 2, 3, 4, 6] (count: 5)
+Levels: 6
+State variables: 39
+Hidden state: True - {'hidden_state'}
+Grammar rules: False
+Sequence parsing: False
+Rotation index: False
+Complex logic: True (2935 lines)
+
+Branching factor: ~34
+State space (depth 10): ~2.06e+15
+State space (depth 20): ~4.26e+30
+
+======================================================================
+Analyzing: FT09
+======================================================================
+Actions: [6] (count: 1)
+Levels: 6
+State variables: 14
+Hidden state: True - {'hidden_state'}
+Grammar rules: False
+Sequence parsing: False
+Rotation index: False
+Complex logic: True (2521 lines)
+
+Branching factor: ~30
+State space (depth 10): ~5.90e+14
+State space (depth 20): ~3.49e+29
+
+======================================================================
+Analyzing: G50T
+======================================================================
+Actions: [1, 2, 3, 4, 5] (count: 5)
+Levels: 7
+State variables: 48
+Hidden state: True - {'hidden_state'}
+Grammar rules: False
+Sequence parsing: False
+Rotation index: False
+Complex logic: True (2856 lines)
+
+Branching factor: ~5
+State space (depth 10): ~9.77e+06
+State space (depth 20): ~9.54e+13
+
+======================================================================
+Analyzing: KA59
+======================================================================
+Actions: [1, 2, 3, 4, 6] (count: 5)
+Levels: 7
+State variables: 8
+Hidden state: True - {'hidden_state'}
+Grammar rules: False
+Sequence parsing: False
+Rotation index: False
+Complex logic: True (1681 lines)
+
+Branching factor: ~34
+State space (depth 10): ~2.06e+15
+State space (depth 20): ~4.26e+30
+
+======================================================================
+Analyzing: LF52
+======================================================================
+Actions: [1, 2, 3, 4, 6, 7] (count: 6)
+Levels: 10
+State variables: 127
+Hidden state: True - {'hidden_state'}
+Grammar rules: False
+Sequence parsing: False
+Rotation index: False
+Complex logic: True (5873 lines)
+
+Branching factor: ~35
+State space (depth 10): ~2.76e+15
+State space (depth 20): ~7.61e+30
+
+======================================================================
+Analyzing: LP85
+======================================================================
+Actions: [6] (count: 1)
+Levels: 8
+State variables: 11
+Hidden state: True - {'hidden_state'}
+Grammar rules: False
+Sequence parsing: False
+Rotation index: False
+Complex logic: True (21452 lines)
+
+Branching factor: ~30
+State space (depth 10): ~5.90e+14
+State space (depth 20): ~3.49e+29
+
+======================================================================
+Analyzing: LS20
+======================================================================
+Actions: [1, 2, 3, 4] (count: 4)
+Levels: 7
+State variables: 47
+Hidden state: True - {'hidden_state'}
+Grammar rules: False
+Sequence parsing: False
+Rotation index: False
+Complex logic: True (2061 lines)
+
+Branching factor: ~4
+State space (depth 10): ~1.05e+06
+State space (depth 20): ~1.10e+12
+
+======================================================================
+Analyzing: M0R0
+======================================================================
+Actions: [1, 2, 3, 4, 5, 6] (count: 6)
+Levels: 6
+State variables: 12
+Hidden state: True - {'hidden_state'}
+Grammar rules: False
+Sequence parsing: False
+Rotation index: False
+Complex logic: True (925 lines)
+
+Branching factor: ~35
+State space (depth 10): ~2.76e+15
+State space (depth 20): ~7.61e+30
+
+======================================================================
+Analyzing: R11L
+======================================================================
+Actions: [6] (count: 1)
+Levels: 6
+State variables: 28
+Hidden state: True - {'hidden_state'}
+Grammar rules: False
+Sequence parsing: False
+Rotation index: False
+Complex logic: True (1835 lines)
+
+Branching factor: ~30
+State space (depth 10): ~5.90e+14
+State space (depth 20): ~3.49e+29
+
+======================================================================
+Analyzing: RE86
+======================================================================
+Actions: [1, 2, 3, 4, 5] (count: 5)
+Levels: 8
+State variables: 8
+Hidden state: True - {'hidden_state'}
+Grammar rules: False
+Sequence parsing: False
+Rotation index: False
+Complex logic: True (2159 lines)
+
+Branching factor: ~5
+State space (depth 10): ~9.77e+06
+State space (depth 20): ~9.54e+13
+
+======================================================================
+Analyzing: S5I5
+======================================================================
+Actions: [6] (count: 1)
+Levels: 8
+State variables: 8
+Hidden state: True - {'hidden_state'}
+Grammar rules: False
+Sequence parsing: False
+Rotation index: False
+Complex logic: True (2248 lines)
+
+Branching factor: ~30
+State space (depth 10): ~5.90e+14
+State space (depth 20): ~3.49e+29
+
+======================================================================
+Analyzing: SB26
+======================================================================
+Actions: [5, 6, 7] (count: 3)
+Levels: 8
+State variables: 27
+Hidden state: True - {'hidden_state'}
+Grammar rules: False
+Sequence parsing: False
+Rotation index: False
+Complex logic: True (1147 lines)
+
+Branching factor: ~32
+State space (depth 10): ~1.13e+15
+State space (depth 20): ~1.27e+30
+
+======================================================================
+Analyzing: SC25
+======================================================================
+Actions: [1, 2, 3, 4, 6] (count: 5)
+Levels: 6
+State variables: 28
+Hidden state: True - {'hidden_state'}
+Grammar rules: False
+Sequence parsing: False
+Rotation index: False
+Complex logic: True (2714 lines)
+
+Branching factor: ~34
+State space (depth 10): ~2.06e+15
+State space (depth 20): ~4.26e+30
+
+======================================================================
+Analyzing: SK48
+======================================================================
+Actions: [1, 2, 3, 4, 6, 7] (count: 6)
+Levels: 8
+State variables: 9
+Hidden state: True - {'hidden_state'}
+Grammar rules: False
+Sequence parsing: False
+Rotation index: False
+Complex logic: True (985 lines)
+
+Branching factor: ~35
+State space (depth 10): ~2.76e+15
+State space (depth 20): ~7.61e+30
+
+======================================================================
+Analyzing: SP80
+======================================================================
+Actions: [1, 2, 3, 4, 5, 6] (count: 6)
+Levels: 6
+State variables: 18
+Hidden state: True - {'hidden_state'}
+Grammar rules: False
+Sequence parsing: False
+Rotation index: False
+Complex logic: True (869 lines)
+
+Branching factor: ~35
+State space (depth 10): ~2.76e+15
+State space (depth 20): ~7.61e+30
+
+======================================================================
+Analyzing: SU15
+======================================================================
+Actions: [6, 7] (count: 2)
+Levels: 9
+State variables: 43
+Hidden state: True - {'hidden_state'}
+Grammar rules: False
+Sequence parsing: False
+Rotation index: False
+Complex logic: True (2173 lines)
+
+Branching factor: ~31
+State space (depth 10): ~8.20e+14
+State space (depth 20): ~6.72e+29
+
+======================================================================
+Analyzing: TN36
+======================================================================
+Actions: [6] (count: 1)
+Levels: 7
+State variables: 52
+Hidden state: True - {'hidden_state'}
+Grammar rules: False
+Sequence parsing: False
+Rotation index: False
+Complex logic: True (2647 lines)
+
+Branching factor: ~30
+State space (depth 10): ~5.90e+14
+State space (depth 20): ~3.49e+29
+
+======================================================================
+Analyzing: TR87
+======================================================================
+Actions: [1, 2, 3, 4] (count: 4)
+Levels: 6
+State variables: 10
+Hidden state: True - {'hidden_state'}
+Grammar rules: True
+Sequence parsing: True
+Rotation index: True
+Complex logic: True (1122 lines)
+
+Branching factor: ~4
+State space (depth 10): ~1.05e+06
+State space (depth 20): ~1.10e+12
+
+======================================================================
+Analyzing: TU93
+======================================================================
+Actions: [1, 2, 3, 4] (count: 4)
+Levels: 9
+State variables: 5
+Hidden state: True - {'hidden_state'}
+Grammar rules: False
+Sequence parsing: False
+Rotation index: False
+Complex logic: True (1274 lines)
+
+Branching factor: ~4
+State space (depth 10): ~1.05e+06
+State space (depth 20): ~1.10e+12
+
+======================================================================
+Analyzing: VC33
+======================================================================
+Actions: [6] (count: 1)
+Levels: 7
+State variables: 10
+Hidden state: True - {'hidden_state'}
+Grammar rules: False
+Sequence parsing: False
+Rotation index: False
+Complex logic: True (2141 lines)
+
+Branching factor: ~30
+State space (depth 10): ~5.90e+14
+State space (depth 20): ~3.49e+29
+
+======================================================================
+Analyzing: WA30
+======================================================================
+Actions: [1, 2, 3, 4, 5] (count: 5)
+Levels: 9
+State variables: 11
+Hidden state: True - {'hidden_state'}
+Grammar rules: False
+Sequence parsing: False
+Rotation index: False
+Complex logic: True (1255 lines)
+
+Branching factor: ~5
+State space (depth 10): ~9.77e+06
+State space (depth 20): ~9.54e+13
+
+======================================================================
+SUMMARY
+======================================================================
+
+Games by action count (easiest first):
+ft09   | Actions:  1 | Levels:  6 | Hidden: ✓ | Grammar: ✗ | Lines: 2521
+lp85   | Actions:  1 | Levels:  8 | Hidden: ✓ | Grammar: ✗ | Lines: 21452
+r11l   | Actions:  1 | Levels:  6 | Hidden: ✓ | Grammar: ✗ | Lines: 1835
+s5i5   | Actions:  1 | Levels:  8 | Hidden: ✓ | Grammar: ✗ | Lines: 2248
+tn36   | Actions:  1 | Levels:  7 | Hidden: ✓ | Grammar: ✗ | Lines: 2647
+vc33   | Actions:  1 | Levels:  7 | Hidden: ✓ | Grammar: ✗ | Lines: 2141
+su15   | Actions:  2 | Levels:  9 | Hidden: ✓ | Grammar: ✗ | Lines: 2173
+sb26   | Actions:  3 | Levels:  8 | Hidden: ✓ | Grammar: ✗ | Lines: 1147
+bp35   | Actions:  4 | Levels:  9 | Hidden: ✓ | Grammar: ✗ | Lines: 4566
+ls20   | Actions:  4 | Levels:  7 | Hidden: ✓ | Grammar: ✗ | Lines: 2061
+tr87   | Actions:  4 | Levels:  6 | Hidden: ✓ | Grammar: ✓ | Lines: 1122
+tu93   | Actions:  4 | Levels:  9 | Hidden: ✓ | Grammar: ✗ | Lines: 1274
+dc22   | Actions:  5 | Levels:  6 | Hidden: ✓ | Grammar: ✗ | Lines: 2935
+g50t   | Actions:  5 | Levels:  7 | Hidden: ✓ | Grammar: ✗ | Lines: 2856
+ka59   | Actions:  5 | Levels:  7 | Hidden: ✓ | Grammar: ✗ | Lines: 1681
+re86   | Actions:  5 | Levels:  8 | Hidden: ✓ | Grammar: ✗ | Lines: 2159
+sc25   | Actions:  5 | Levels:  6 | Hidden: ✓ | Grammar: ✗ | Lines: 2714
+wa30   | Actions:  5 | Levels:  9 | Hidden: ✓ | Grammar: ✗ | Lines: 1255
+cd82   | Actions:  6 | Levels:  6 | Hidden: ✓ | Grammar: ✗ | Lines:  778
+cn04   | Actions:  6 | Levels:  5 | Hidden: ✓ | Grammar: ✗ | Lines:  691
+lf52   | Actions:  6 | Levels: 10 | Hidden: ✓ | Grammar: ✗ | Lines: 5873
+m0r0   | Actions:  6 | Levels:  6 | Hidden: ✓ | Grammar: ✗ | Lines:  925
+sk48   | Actions:  6 | Levels:  8 | Hidden: ✓ | Grammar: ✗ | Lines:  985
+sp80   | Actions:  6 | Levels:  6 | Hidden: ✓ | Grammar: ✗ | Lines:  869
+ar25   | Actions:  7 | Levels:  8 | Hidden: ✓ | Grammar: ✗ | Lines: 1842
+
+
+Quick wins (low branching factor, no hidden state):
+
+
+Hidden state games (need proper hashing):
+  ft09   - 1 actions, vars: {'hidden_state'}
+  lp85   - 1 actions, vars: {'hidden_state'}
+  r11l   - 1 actions, vars: {'hidden_state'}
+  s5i5   - 1 actions, vars: {'hidden_state'}
+  tn36   - 1 actions, vars: {'hidden_state'}
+  vc33   - 1 actions, vars: {'hidden_state'}
+  su15   - 2 actions, vars: {'hidden_state'}
+  sb26   - 3 actions, vars: {'hidden_state'}
+  bp35   - 4 actions, vars: {'hidden_state'}
+  ls20   - 4 actions, vars: {'hidden_state'}
+  tr87   - 4 actions, vars: {'hidden_state'}
+  tu93   - 4 actions, vars: {'hidden_state'}
+  dc22   - 5 actions, vars: {'hidden_state'}
+  g50t   - 5 actions, vars: {'hidden_state'}
+  ka59   - 5 actions, vars: {'hidden_state'}
+  re86   - 5 actions, vars: {'hidden_state'}
+  sc25   - 5 actions, vars: {'hidden_state'}
+  wa30   - 5 actions, vars: {'hidden_state'}
+  cd82   - 6 actions, vars: {'hidden_state'}
+  cn04   - 6 actions, vars: {'hidden_state'}
+  lf52   - 6 actions, vars: {'hidden_state'}
+  m0r0   - 6 actions, vars: {'hidden_state'}
+  sk48   - 6 actions, vars: {'hidden_state'}
+  sp80   - 6 actions, vars: {'hidden_state'}
+  ar25   - 7 actions, vars: {'hidden_state'}
+
+
+Grammar games (need special solver):
+  tr87   - 4 actions

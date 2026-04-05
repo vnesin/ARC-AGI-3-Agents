@@ -1,0 +1,21 @@
+Metadata-Version: 2.4
+Name: arc-agi-3-agents
+Version: 0.1.0
+Summary: ARC-AGI-3-Agents
+Requires-Python: >=3.12
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: arc-agi>=0.9.1
+Requires-Dist: dotenv>=0.9.9
+Requires-Dist: langchain[openai]>=0.3.27
+Requires-Dist: langgraph>=0.6.3
+Requires-Dist: langgraph-checkpoint-sqlite>=2.0.11
+Requires-Dist: numpy>=2.3.2
+Requires-Dist: openai==1.72.0
+Requires-Dist: pillow>=11.2.1
+Requires-Dist: pydantic>=2.11.7
+Requires-Dist: requests>=2.32.4
+Requires-Dist: smolagents>=1.20.0
+Provides-Extra: agentops
+Requires-Dist: agentops>=0.4.18; extra == "agentops"
+Dynamic: license-file
