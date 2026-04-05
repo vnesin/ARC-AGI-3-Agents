@@ -1,0 +1,5 @@
+Scan L0: 5 actions (5 kbd, 0 clicks)
+BFS L0 exhausted: 8143 states, 12209 visited, 120.0s
+Scan L0: 11 actions (3 kbd, 8 clicks)
+BFS L0 exhausted: 718 states, 1401 visited, 90.0s
+Scan L0: 7 actions (4 kbd, 3 clicks)
